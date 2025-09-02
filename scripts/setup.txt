@@ -1,0 +1,13 @@
+yarn create nuxt nikki-no-nikki
+yarn add @nuxt/content
+npm install --global node-gyp@latest
+
+// Follow the following link to fix better-sqlite3 installation: https://github.com/WiseLibs/better-sqlite3/blob/HEAD/docs/troubleshooting.md
+// Run: C:\Program Files\nodejs\install_tools.bat (failed partially)
+// Install VS2019 Build Tools through VS Installer
+yarn add @types/better-sqlite3
+
+yarn add tailwindcss @tailwindcss/vite
+
+
+npx nuxt module add fonts
