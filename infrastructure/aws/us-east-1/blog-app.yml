@@ -3,7 +3,7 @@ Resources:
   BlogS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: blog-app
+      BucketName: blog-nikkiyodo-app
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
         BlockPublicPolicy: false
@@ -79,14 +79,3 @@ Resources:
     Properties:
       DomainName: blog.nikkiyodo.com
       ValidationMethod: DNS
- 
-  BlogRecordSet:
-    Type: AWS::Route53::RecordSet
-    Properties: 
-      AliasTarget: 
-        DNSName: !GetAtt BlogCloudFrontDistribution.DomainName
-        HostedZoneId: Z2FDTNDATAQYW2
-      HostedZoneId: !ImportValue BlogHostedZoneId
-      Name: blog.nikkiyodo.com
-      Type: A
-  
