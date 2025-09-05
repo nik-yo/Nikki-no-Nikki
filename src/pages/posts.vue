@@ -17,7 +17,7 @@ const { data } = await useAsyncData('navigation', () => {
             {{ year.title }}/{{ month.title }}
             <ul class="list-disc ml-2">
               <li v-for="post in month.children" :key="post.path" class="ml-4">
-                <NuxtLink :to="post.path" class="text-blue-600">{{ post.title }}</NuxtLink>
+                <NuxtLink :to="post.path" class="text-blue-600">{{ post.title.substring(3) }}</NuxtLink>
               </li>
             </ul>
           </li>

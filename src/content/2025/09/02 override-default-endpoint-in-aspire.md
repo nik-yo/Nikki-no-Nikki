@@ -1,8 +1,8 @@
-::post-title
 ---
-date: 2025-08-08
+date: 2025-09-02
 ---
 
+::post-title{:date="date"}
 # Override Default Endpoint in .NET Aspire
 ::
 
@@ -78,3 +78,9 @@ var mongodb = builder.AddMongoDB("mongo")
 <br/>
 
 It is strange to me that two overloads of a method work differently at its core.
+
+::section-title
+## GitHub Repository
+::
+
+(TBA)
