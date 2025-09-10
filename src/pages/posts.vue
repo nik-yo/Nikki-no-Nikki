@@ -6,9 +6,7 @@ const { data } = await useAsyncData('navigation', () => {
 </script>
 
 <template>
-  <div class="my-2 mx-4">
-    <h3 class="text-xl">Posts</h3>
-  </div>
+  <div><h3 class="text-xl my-2 mx-4">Posts</h3></div>
   <nav>
     <ul v-if="data">
       <li v-for="year in data" :key="year.path">

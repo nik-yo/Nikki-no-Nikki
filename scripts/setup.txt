@@ -9,5 +9,6 @@ yarn add @types/better-sqlite3
 
 yarn add tailwindcss @tailwindcss/vite
 
-
 npx nuxt module add fonts
+
+yarn add minisearch
