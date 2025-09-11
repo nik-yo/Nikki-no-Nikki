@@ -6,6 +6,8 @@ date: 2025-09-06
 # Download Passthrough using .NET Web API
 ::
 
+<br />
+
 In one of my projects, one of the feature is to be able to upload to and download from existing service/API. Basically, the backend will act as a middle man. The first approach is for the backend to download the file, store it as byte array and then send it down to the frontend like the following:
 
 ::code-block

@@ -6,6 +6,8 @@ date: 2025-09-04
 # Handle CORS with Proxy Config
 ::
 
+<br />
+
 I was trying to run application that serves MFE (Micro Front-End) component locally. This application, let's call it parent MFE, in turn, retrieves MFE component from a different application, let's call this child MFE.
 
 <br />

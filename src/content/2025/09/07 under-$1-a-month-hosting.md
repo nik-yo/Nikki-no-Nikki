@@ -6,6 +6,8 @@ date: 2025-09-07
 # Under $1 a month Hosting
 ::
 
+<br />
+
 This is probably one of my exciting finds from few years ago. At that time, I wanted to modernize my old personal site and not having to pay $12 a month for hosting. My requirements were cheap to host, using newer technology, and easy to maintain.
 
 <br />
@@ -22,7 +24,7 @@ Now, my old site has database. But I really only care about the data, so I decid
 
 <br />
 
-Finally hosting. The cheapest hosting I can find is $2-3 a month. So, I turned to cloud, in this case, I use AWS. With it, I can finally host my personal site under $1 a month. My October 2025 cost was only $0.53. And it's not only for 1 site, I have multiple hosted in AWS.
+Finally hosting. The cheapest hosting I can find is $2-3 a month. So, I turned to cloud, in this case, I use AWS. With it, I can finally host my personal site under $1 a month. My October 2025 cost was only $0.53. And it's not only for 1 site, I have multiple sites hosted in AWS.
 
 <br />
 

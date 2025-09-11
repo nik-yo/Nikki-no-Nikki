@@ -6,6 +6,8 @@ date: 2025-09-03
 # Generate Large Text Files
 ::
 
+<br />
+
 As part of my work, I need to ensure I can upload and download a reasonably large document. Just to ensure that I can validate that downloaded document is the same document after uploading. I decided to find a way to create a large text file with random string. 
 
 After quick search, the easiest and reliable way for me is to use Linux. On Windows, I simply use WSL and change directory to `/mnt/c/...` which is the same directory as `C:\...` in Windows, e.g. `/mnt/c/Users/username/Downloads`. That way I know where the file is saved to and can access it on Windows side.

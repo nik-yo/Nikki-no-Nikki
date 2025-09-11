@@ -6,6 +6,8 @@ date: 2025-09-05
 # Analytics with Umami
 ::
 
+<br />
+
 I'm thinking of using third party to check how many visitors to my new blog. Of course, the first thing that came to mind is Google Analytics. But I'm wondered if there's a good alternative. In online forum, some suggested Umami, so I decided to sign up.
 
 The process from sign up to integration was smooth. It took me less than 5 minutes from zero to running. One thing that I need to adjust is because I used Nuxt, I had to configure Umami's script tag from:
