@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import mermaid from 'mermaid';
+mermaid.initialize({ startOnLoad: true });
+
 const router = useRouter()
 const route = useRoute()
 const { data: post } = await useAsyncData(route.path, () => {

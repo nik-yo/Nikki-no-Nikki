@@ -12,3 +12,4 @@ yarn add tailwindcss @tailwindcss/vite
 npx nuxt module add fonts
 
 yarn add minisearch
+yarn add mermaid
