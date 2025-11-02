@@ -25,7 +25,7 @@ h1.header:hover span.kanji {
           <h1 class="header text-6xl text-white text-shadow-lg opacity-90"><NuxtLink to="/">Nikki <span class="romaji">no nikki</span><span class="kanji text-4xl font-semibold">の 日記</span></NuxtLink></h1>
           <div class="flex md:mx-16 md:mx-20 lg:mx-40 2xl:mx-60 px-4">
             <div><NuxtLink to="/posts" class="bg-orange-200 rounded inline-block px-4 py-1">Posts</NuxtLink></div>
-            <div class="grow"><h5 class="text-lg text-white font-semibold text-shadow-md"><NuxtLink to="/">Nikki's diary</NuxtLink></h5></div>
+            <div class="grow"><h5 class="text-lg text-white font-semibold text-shadow-md"><NuxtLink to="/">Nikki's Troubleshooting Diary</NuxtLink></h5></div>
             <div><NuxtLink to="/search" class="bg-orange-200 rounded inline-block px-4 py-1">Search</NuxtLink></div>
           </div>
         </div>
