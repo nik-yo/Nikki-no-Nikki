@@ -21,3 +21,8 @@ content
 code
 ```
 ::
+
+`inline-code`{.bg-gray-200 .p-2 .rounded}
+
+
+(link-title)[link-url]{.text-blue-600}
