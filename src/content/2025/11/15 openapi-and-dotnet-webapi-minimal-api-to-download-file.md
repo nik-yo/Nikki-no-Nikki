@@ -58,7 +58,7 @@ Perhaps there's .NET 9 equivalent to `IOperationFilter`{.bg-gray-200 .p-2 .round
 
 <br/>
 
-Fortunately, per endpoint application is addressed in .NET 10: [https://learn.microsoft.com/en-us/aspnet/core/fundamentals/openapi/customize-openapi?view=aspnetcore-10.0#use-operation-transformers]{.text-blue-600} and in .NET 10, I can then do this for a specific endpoint:
+Fortunately, per endpoint application is addressed in .NET 10: [https://learn.microsoft.com/en-us/aspnet/core/fundamentals/openapi/customize-openapi?view=aspnetcore-10.0#use-operation-transformers]{.text-blue-600} and in .NET 10, I can then apply it for a specific endpoint:
 
 ::code-block
 ```
@@ -147,7 +147,7 @@ And the above will produces the following response:
 ```
 ::
 
-Notice that the format is byte instead of binary. Basically, **byte** is used when we want to return json along with the file content. To return only the file itself without json, **binary** is used. To read more on binary vs byte, please check [https://swagger.io/docs/specification/v3_0/describing-responses/#response-that-returns-a-file:~:text=The%20user%20name.-,Response%20That%20Returns%20a%20File,-An%20API%20operation]{.text-blue-600}.
+Notice that the format is byte instead of binary. Basically, **byte** is used when we want to return json along with the file content. To return only the file itself without json, use **binary**. To read more on binary vs byte, please check [https://swagger.io/docs/specification/v3_0/describing-responses/#response-that-returns-a-file:~:text=The%20user%20name.-,Response%20That%20Returns%20a%20File,-An%20API%20operation]{.text-blue-600}.
 
 <br/>
 
@@ -184,4 +184,4 @@ It produces a better client-side code but somehow, the return value on the clien
 
 <br/>
 
-Per my testing on the client side, although the server returns `FileStreamHttpResult`{.bg-gray-200 .p-2 .rounded} which is a complex object, Scalar correctly return binary in the body and thus the client correctly extracts blob from the call. One final note is the generated OpenAPI document response can be different from the actual working of the endpoint and in this case, it's our responsibility to keep them in sync.
+Although the server returns `FileStreamHttpResult`{.bg-gray-200 .p-2 .rounded} which is a complex object, Scalar correctly return binary in the body and thus the client correctly extracts blob from the call. One final note is the generated OpenAPI document response can be different from the actual working of the endpoint and in this case, it's our responsibility to keep them in sync.
