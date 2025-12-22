@@ -26,7 +26,7 @@ route('/some-route', withAuthenticationRequired('path-to-file'))
 
 <br/>
 
-Back in React Router v6, since I was using either Data or Declarative mode, I can just create AuthenticationGuard component and apply it on the route itself similar to this (Auth0 guide)[https://developer.auth0.com/resources/guides/spa/react/basic-authentication#:~:text=the%20next%20section.-,Add%20Route%20Guards%20to%20React,-You%27ll%20create%20an]{.text-blue-600}. But obviously can't be applied to React Router v7 Framework mode.
+Back in React Router v6, since I was using either Data or Declarative mode, I can just create AuthenticationGuard component and apply it on the route itself similar to this [Auth0 guide](https://developer.auth0.com/resources/guides/spa/react/basic-authentication#:~:text=the%20next%20section.-,Add%20Route%20Guards%20to%20React,-You%27ll%20create%20an){.text-blue-600}. But obviously can't be applied to React Router v7 Framework mode.
 
 <br/>
 
