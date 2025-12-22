@@ -58,45 +58,116 @@ yarn add mermaid
 ```
 ::
 
-Then I had to initialize it in the page that I want to render the diagram.
+<br/>
+
+It actual does server side rendering, but since I'm not going to have a server, I need a client side rendering. Good thing is there's a workaround: [https://github.com/nuxt/content/issues/1866]{.text-blue-600}. Thank to all the folks that contribute to the solutions!
+
+<br/>
+
+First, we need to create a client side plugin under `<app>/plugins/mermaid.client.ts`{.bg-gray-200 .p-2 .rounded} with the following content:
 
 ::code-block
 ```
-<script lang="ts" setup>
-import mermaid from 'mermaid';
-mermaid.initialize({ startOnLoad: true });
-</script>
+import mermaid from 'mermaid'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.provide('mermaid', () => mermaid)
+})
 ```
 ::
 
-Then on the markdown, I have the following syntax:
+<br/>
+
+Next, we need a custom component, let say `<app>/components/mermaid.vue`{.bg-gray-200 .p-2 .rounded}:
+
 
 ::code-block
 ```
-<pre class="mermaid">
+<script setup lang="ts">
+  const { $mermaid } = useNuxtApp();
+  const mermaidContainer = ref<HTMLPreElement | null>(null)
+
+  onMounted(async () => {
+    const { $mermaid } = useNuxtApp();
+  const mermaidContainer = ref<HTMLPreElement | null>(null)
+
+  onMounted(async () => {
+    if (mermaidContainer.value?.textContent) {
+      await nextTick()
+      try {
+        $mermaid().initialize({ startOnLoad: false, theme: 'default' })
+        await $mermaid().run({
+          nodes: [mermaidContainer.value],
+        })
+      }
+      catch (e) {
+        console.error('Error running Mermaid:', e)
+        mermaidContainer.value.innerHTML = '⚠️ Mermaid Chart Syntax Error'
+      }
+    }
+  })
+</script>
+
+<template>
+  <pre ref="mermaidContainer" class="mermaid">
+    <slot mdc-unwrap="p" />
+  </pre>
+</template>
+```
+::
+
+<br/>
+
+Then, add a type to make typescript happy at `<app>/types/mermaid.d.ts`{.bg-gray-200 .p-2 .rounded}:
+
+::code-block
+```
+import type { mermaid } from 'mermaid'
+
+declare module '#app' {
+  interface NuxtApp {
+    $mermaid: () => mermaid
+  }
+}
+
+export {}
+```
+::
+
+<br/>
+
+Finally, on the markdown:
+
+::code-block
+```
+
+::mermaid
 sequenceDiagram
     participant user as User
     participant web as Web UI
     participant api as API
     user->>web: GET /
-    web->>user: return &lt;html&gt;
+    web->>user: return <html>
     user-->>api: GET /api/resource
     api-->>user: return {json}
-</pre>
+::
+
 ```
 ::
 
 which renders the diagram:
-<pre class="mermaid">
+::mermaid-block
 sequenceDiagram
     participant user as User
     participant web as Web UI
     participant api as API
     user->>web: GET /
-    web->>user: return &lt;html&gt;
+    web->>user: return <html>
     user-->>api: GET /api/resource
     api-->>user: return {json}
-</pre>
+::
+
+<br/>
 
 For more information:
 [https://mermaid.js.org/]{.text-blue-600}
