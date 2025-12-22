@@ -13,3 +13,9 @@ npx nuxt module add fonts
 
 yarn add minisearch
 yarn add mermaid
+
+//https://nuxtseo.com/docs/robots/advanced/content
+//https://nuxtseo.com/docs/robots/getting-started/installation
+yarn add @nuxtjs/robots
+
+//https://nuxt.com/modules/llms
