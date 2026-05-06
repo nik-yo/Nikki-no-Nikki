@@ -1,0 +1,51 @@
+---
+date: 2026-05-06
+---
+
+::post-title{:date="date"}
+# Running Local Agentic Model with Ollama
+::
+
+<br/>
+
+Lately I was into running local model to get help with coding and Ollama made it very easy in 3 steps:
+
+1. Install Ollama
+2. Download and run model
+3. Install VS code extension
+
+<br/>
+
+Few things I learned, for agent mode, some VS code extensions require the model to be tagged with `tools` capability. For example, `deepseek-coder` is not tagged with `tools` even if it is meant for coding and thus it doesn't work with some VS code extensions, while `qwen-coder` models are tagged. 
+
+<br/>
+
+Another thing to watch out for is the context window. Each model has a suggested size, but 32k tends to be a good start.
+
+<br/>
+
+Most VS code extensions that I tried are not responsive enough. Some probably due to **System Prompt** which some extensions allow you to change. I can't say I have a favorite one yet due to poor performance. VS code extensions that I tried:
+
+- continue.dev
+- ROO code
+- Cline
+
+<br/>
+
+I do most coding in Windows machine, however, my machine can't handle local model very well. So, I tried running Ollama in my Macbook and tried to connect to it from my window machine. A quick test can be done by setting **OLLAMA_HOST** environment variable.
+
+<br/>
+
+On my Macbook, I set OLLAMA_HOST to `0.0.0.0:11434` and then run `ollama serve`. Ensure firewall does not interfere. Then get the ip address to the machine by running `ipconfig getifaddr en0` on the terminal.
+
+<br/>
+
+On my Window machine, I set the OLLAMA_HOST environment variable to the ip address of the Macbook, so it will be `<ip-address>:11434`. Then launch Ollama for a quick test.
+
+<br/>
+
+To get VS code to use remote Ollama, I tried with Cline and set the Ollama Url to the ip address of the Macbook along with the port that Ollama use. It works, but sadly not very performant yet.
+
+<br/>
+
+Another thing to warn is machine can be very hot when running Ollama, so I make sure it doesn't automatically start (especially on startup) in any of my machines.
