@@ -6,10 +6,6 @@ date: 2026-02-01
 # Title
 ::
 
-::notes
-This is a repost from my old blog. First posted in 1/1/2025.
-::
-
 <br/>
 
 content
