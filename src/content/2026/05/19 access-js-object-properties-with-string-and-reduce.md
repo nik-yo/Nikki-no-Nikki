@@ -35,6 +35,7 @@ const theObject = {
 
 const firstLevelValue = theObject["topLevel.firstLevel"]; // Doesn't work
 ```
+::
 
 <br/>
 
@@ -66,6 +67,7 @@ const firstLevelValue = getValue("topLevel.firstLevel");
 
 console.log(firstLevelValue); // will be 1
 ```
+::
 
 <br/>
 
@@ -112,6 +114,7 @@ const secondLevelValue = getValue("topLevel.firstLevel.1.secondLevel");
 
 console.log(secondLevelValue); // will be "secondElement"
 ```
+::
 
 <br/>
 
