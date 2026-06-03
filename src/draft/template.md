@@ -1,5 +1,5 @@
 ---
-date: 2026-02-01
+date: 2026-06-01
 ---
 
 ::post-title{:date="date"}
