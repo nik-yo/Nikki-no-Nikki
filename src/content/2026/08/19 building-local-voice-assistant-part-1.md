@@ -101,6 +101,8 @@ brew install lm-studio --cask
 
 Running LM Studio, I downloaded `Gemma 4 12B`{.bg-gray-200 .p-2 .rounded} model. Then to accept request through api call, I have to enable LM Studio Local Server which can be done by running `lms server start`{.bg-gray-200 .p-2 .rounded} or simply flipping the switch under Local Server inside LM Studio UI:
 
+<br/>
+
 ![LM Studio Local Server](/lm-studio-local-server.png)
 
 <br/>
@@ -253,6 +255,8 @@ To actual run the code, I find it easiest to right click on the file and select 
 6. The response will then be synthesized into audio.
 7. Hit play on the generated widget in interactive window will play the audio. I find the autoplay doesn't work even though it is set to true.
 8. Also, Gemma by default has `Enable Thinking` set to true, so the respond tends to come with reason. It can be turned off in LM Studio under `Inference > Custom Fields > Enable Thinking`. Turning thinking off will result in "cleaner" respond. Also, I noticed it breaks when the response is big.
+
+<br/>
 
 ![LM Studio Enable Thinking](/lm-studio-enable-thinking.png)
 
