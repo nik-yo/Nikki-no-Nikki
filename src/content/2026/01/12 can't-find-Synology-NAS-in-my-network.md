@@ -24,7 +24,7 @@ The Synology Assistant can be found in Synology Download Center under Desktop Ut
 
 [https://www.synology.com/en-us/support/download]{.text-blue-600}
 
-![Synology Assistant](../../../public/synology-assistant.png)
+![Synology Assistant](/synology-assistant.png)
 
 <br/>
 

@@ -8,11 +8,11 @@ date: 2026-08-19
 
 <br/>
 
-I just recently purchased a Amazon Echo Show with Alexa+. Considering LLM has matured considerably, I think voice assistant should have improved significantly and indeed it is. And I have been wondering if I can create one and run it locally on my machine. So, today is my first attempt.
+Considering LLM has matured considerably, I think voice assistant should have improved significantly and indeed it is. And I have been wondering if I can create one and run it locally on my machine. So, today is my first attempt.
 
 <br/>
 
-I started with a quick search and decided to try Hugging Face Audio Course, especially on [Creating a voice assistant](https://huggingface.co/learn/audio-course/en/chapter7/voice-assistant){.text-blue-600}. It is well-written but there are a few missing steps and some parts need an update. My starting tools are:
+I started with a quick search and decided to try Hugging Face Audio Course, especially on [Creating a voice assistant](https://huggingface.co/learn/audio-course/en/chapter7/voice-assistant){.text-blue-600}. It is well-written but there are a few missing steps (part of the fun) and some parts need an update. My starting tools are:
 - Macbook Pro (M3 Pro) with 36GB of RAM
 - VS Code
 - Homebrew
@@ -32,15 +32,15 @@ Following the article, I installed uv ([https://docs.astral.sh/uv/]{.text-blue-6
 ## Step 2: Create a project directory
 ::
 
-Since some tools need a virtual environment, it's better if I have a directory/folder that contains all my projects. So, I opened a terminal and run `mkdir voice-assistant`{.bg-gray-200 .p-2 .rounded} to create a folder. Since I already have a VS Code installed, I can open the new directory in VS Code by running `code voice-assistant`{.bg-gray-200 .p-2 .rounded}.
+Since some tools need a virtual environment, so I opened a terminal and run `mkdir voice-assistant`{.bg-gray-200 .p-2 .rounded} to create a directory. Since I already have a VS Code installed, I can open the new directory in VS Code by running `code voice-assistant`{.bg-gray-200 .p-2 .rounded}.
 
 <br/>
 
 ::section-title
-## Step 3: Create a Python virtual directory and activate
+## Step 3: Create a Python virtual environment and activate
 ::
 
-At this point, I'm inside VS Code. To create a virtual directory, I first launched terminal inside VS Code by pressing ``Ctrl + ` ``{.bg-gray-200 .p-2 .rounded}, and then run:
+At this point, I'm inside VS Code. To create a virtual environment, I first launched terminal inside VS Code by pressing ``Ctrl + ` ``{.bg-gray-200 .p-2 .rounded}, and then run:
 
 ::code-block
 ```
@@ -56,7 +56,7 @@ The command above will create a virtual environment with name ".env" and install
 ```
 ::
 
-But since the terminal inside VS code is not allowed to run executable, I need to prefix it with another ".", so inside VS code, run:
+But since the activate file must be sourced, I need to prefix it with "source" or another ".", so inside VS code, run:
 
 ::code-block
 ```
@@ -70,7 +70,7 @@ But since the terminal inside VS code is not allowed to run executable, I need t
 ## Step 4: Create a python file/module and install dependencies/packages
 ::
 
-You are welcomed to follow the article in Hugging Face, which provides a step-by-step approach and better explanation. But since this post is about my experience, I will provide my result up to today. I created a file named `main.py`{.bg-gray-200 .p-2 .rounded} and then install the following Python packages:
+You are welcomed to follow the article in Hugging Face, which provides a step-by-step approach and better explanation. But since this post is about my experience, I will provide all the commands I ran. I created a file named `main.py`{.bg-gray-200 .p-2 .rounded} and then install the following Python packages:
 
 ::code-block
 ```
@@ -91,7 +91,7 @@ uv pip install datasets=3.6.0 // 4.0.0 will throw an error
 ## Step 5: Install LM Studio and download model for inference
 ::
 
-The Hugging Face article will use remote hosted model for inference, but in my case, I want to run all in my machine, so I install LM Studio:
+The Hugging Face article will use remote hosted model for inference, but in my case, I want to run all in my machine, so I install LM Studio and in the code, I changed the query function to call the locally hosted model.
 
 ::code-block
 ```
@@ -101,7 +101,7 @@ brew install lm-studio --cask
 
 Running LM Studio, I downloaded `Gemma 4 12B`{.bg-gray-200 .p-2 .rounded} model. Then to accept request through api call, I have to enable LM Studio Local Server which can be done by running `lms server start`{.bg-gray-200 .p-2 .rounded} or simply flipping the switch under Local Server inside LM Studio UI:
 
-![LM Studio Local Server](../../../public/lm-studio-local-server.png)
+![LM Studio Local Server](/lm-studio-local-server.png)
 
 <br/>
 
@@ -237,7 +237,7 @@ Audio(audio, rate=16000, autoplay=True)
 ## Step 9: Prepare to run
 ::
 
-To run the code, first, we need to select a kernel for the interactive window. To create the interactive window, with main.py active, open command pallete by using `Ctrl + Shift + P`{.bg-gray-200 .p-2 .rounded} in visual studio, then select **Jupyter: Run Current File in Python Interactive Window**. For the first time, it won't actually run, but prompt us to select a kernel, so we just need to follow the instruction. In my case, I selected Python 3.11, since the code was compatible with datasets 3.6.0 and Python 3.11.
+To run the code, first, we need to select a kernel for the interactive window. To create the interactive window, with main.py active, open command pallete by using `Ctrl + Shift + P`{.bg-gray-200 .p-2 .rounded} in VS Code, then select **Jupyter: Run Current File in Python Interactive Window**. If no kernel is set yet, interactive window will prompt us to select a kernel, so we just need to follow the instruction. In my case, I selected Python 3.11, since the code was compatible with datasets 3.6.0 and Python 3.11.
 
 ::section-title
 ## Step 10: Run and tweak
@@ -246,15 +246,15 @@ To run the code, first, we need to select a kernel for the interactive window. T
 To actual run the code, I find it easiest to right click on the file and select **Run Current File in Interactive Window**. This will do the following:
 
 1. Download all the required models for various tasks.
-2. At runtime, VS code might need permission to use mic on your device. Once permission is allowed, also check if mic is not muted.
+2. At runtime, VS code will need permission to use mic on your device. Once permission is allowed, also check if mic is not muted.
 3. Listening to wake word. Following HF article, it will be "Marvin".
 4. Saying "Marvin" will activate the actual listening, so say something like "What's the capital city of US?" (my test phrase). Sometimes, it doesn't get it right and pick up noise. I find it better when I selected "Voice Isolation" mode. There should an orange mic icon on the top right menu bar where we can change the Mic Mode.
-5. After listening, transcribed word will be sent to LM Studio (keep the server running) typically in "http://localhost:1234".
+5. After listening, transcribed word will be sent to LM Studio (keep the server running) typically at "http://localhost:1234".
 6. The response will then be synthesized into audio.
-7. Hit play on the generated widget will play the audio. I find the autoplay doesn't work eventhough it is set to true.
+7. Hit play on the generated widget in interactive window will play the audio. I find the autoplay doesn't work even though it is set to true.
 8. Also, Gemma by default has `Enable Thinking` set to true, so the respond tends to come with reason. It can be turned off in LM Studio under `Inference > Custom Fields > Enable Thinking`. Turning thinking off will result in "cleaner" respond. Also, I noticed it breaks when the response is big.
 
-![alt text](../../../public/lm-studio-enable-thinking.png)
+![LM Studio Enable Thinking](/lm-studio-enable-thinking.png)
 
 <br/>
 
